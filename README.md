@@ -18,7 +18,7 @@ Head over to the [Releases](../../releases) page to download the latest version 
 ## For Developers
 If you want to run from source:
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+git clone https://github.com/sudhirjangra/simple-markdown-viewer.git
 cd YOUR_REPO_NAME
 pip install -r requirements.txt
 python app.py
