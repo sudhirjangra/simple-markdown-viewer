@@ -1,0 +1,8 @@
+markdown-viewer (1.0.1) unstable; urgency=low
+
+  * Initial release
+  * Added About dialog
+  * Professional desktop integration
+  * Author metadata added
+
+ -- Sudhir Jangra <sudhirjangra@example.com>  Sun, 08 Jun 2025 00:00:00 +0000

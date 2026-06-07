@@ -1,13 +1,24 @@
+#!/usr/bin/env python3
+"""
+Markdown Viewer - Professional Markdown Reader with Live Preview
+Copyright (c) 2025 Sudhir Jangra
+Licensed under MIT License
+"""
+
+__version__ = "1.0.1"
+__author__ = "Sudhir Jangra"
+__license__ = "MIT"
+
 import sys
 import os
 import markdown
 import webbrowser
 from PyQt6.QtCore import QDir, Qt, QUrl
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QSplitter, QTreeView, QVBoxLayout, 
-    QWidget, QToolBar, QFileDialog, QTabWidget, QTextBrowser
+    QApplication, QMainWindow, QSplitter, QTreeView, QVBoxLayout,
+    QWidget, QToolBar, QFileDialog, QTabWidget, QTextBrowser, QMessageBox
 )
-from PyQt6.QtGui import QAction, QFileSystemModel
+from PyQt6.QtGui import QAction, QFileSystemModel, QIcon
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtWebEngineCore import QWebEnginePage, QWebEngineSettings
 
@@ -40,8 +51,13 @@ class MarkdownViewer(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.setWindowTitle("Markdown Reader - Sudhir Jangra")
+        self.setWindowTitle(f"Markdown Viewer v{__version__} - {__author__}")
         self.resize(1300, 800)
+
+        # Set application icon if exists
+        icon_path = os.path.join(os.path.dirname(__file__), "icon.png")
+        if os.path.exists(icon_path):
+            self.setWindowIcon(QIcon(icon_path))
 
         main_splitter = QSplitter(Qt.Orientation.Horizontal)
         self.setCentralWidget(main_splitter)
@@ -85,6 +101,10 @@ class MarkdownViewer(QMainWindow):
         self.theme_action = QAction("🌓 Toggle Theme", self)
         self.theme_action.triggered.connect(self.toggle_theme)
         toolbar.addAction(self.theme_action)
+
+        about_action = QAction("ℹ️ About", self)
+        about_action.triggered.connect(self.show_about)
+        toolbar.addAction(about_action)
 
         self.preview = QWebEngineView()
         self.preview.setPage(MarkdownWebPage(self))
@@ -185,6 +205,24 @@ class MarkdownViewer(QMainWindow):
             with open(self.current_file, 'r', encoding='utf-8') as f:
                 self.update_preview(f.read())
 
+    def show_about(self):
+        QMessageBox.about(self, "About Markdown Viewer",
+            f"""<h2>Markdown Viewer</h2>
+            <p><b>Version:</b> {__version__}</p>
+            <p><b>Author:</b> {__author__}</p>
+            <p><b>License:</b> {__license__}</p>
+            <br>
+            <p>Professional Markdown reader with live preview, GitHub-flavored styling, and outline navigation.</p>
+            <p>Features:</p>
+            <ul>
+                <li>File browser with .md filtering</li>
+                <li>Live preview with GitHub CSS</li>
+                <li>Table of contents navigation</li>
+                <li>Dark/Light theme toggle</li>
+                <li>Relative link support</li>
+            </ul>
+            """)
+
     def apply_theme(self):
         if self.is_dark_theme:
             self.setStyleSheet("""
@@ -215,6 +253,15 @@ class MarkdownViewer(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setApplicationName("Markdown Viewer")
+    app.setApplicationVersion(__version__)
+    app.setOrganizationName(__author__)
+
+    # Set app icon if exists
+    icon_path = os.path.join(os.path.dirname(__file__), "icon.png")
+    if os.path.exists(icon_path):
+        app.setWindowIcon(QIcon(icon_path))
+
     viewer = MarkdownViewer()
     viewer.show()
     sys.exit(app.exec())

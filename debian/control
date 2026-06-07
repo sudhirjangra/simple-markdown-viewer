@@ -1,0 +1,18 @@
+Source: markdown-viewer
+Section: text
+Priority: optional
+Maintainer: Sudhir Jangra <sudhirjangra@example.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Homepage: https://github.com/sudhirjangra/markdown-viewer
+
+Package: markdown-viewer
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-pyqt6, python3-pyqt6.qtwebengine, python3-markdown
+Description: Professional Markdown Reader with Live Preview
+ A modern markdown viewer with:
+  - File browser with .md filtering
+  - Live preview with GitHub CSS styling
+  - Table of contents navigation
+  - Dark/Light theme toggle
+  - Support for relative links

@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+override_dh_auto_test:
+override_dh_auto_install:
+	install -Dm755 app.py debian/markdown-viewer/usr/bin/markdown-viewer
+	install -Dm644 icon.png debian/markdown-viewer/usr/share/pixmaps/markdown-viewer.png
+	install -Dm644 markdown-viewer.desktop debian/markdown-viewer/usr/share/applications/markdown-viewer.desktop
+	install -Dm644 LICENSE debian/markdown-viewer/usr/share/doc/markdown-viewer/copyright

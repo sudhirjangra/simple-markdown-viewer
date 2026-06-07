@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Markdown Viewer
+Comment=Professional Markdown Reader with Live Preview
+Exec=markdown-viewer %F
+Icon=markdown-viewer
+Terminal=false
+Categories=Office;Viewer;Qt;
+MimeType=text/markdown;text/x-markdown;
+Keywords=markdown;md;viewer;reader;preview;
+StartupNotify=true
+StartupWMClass=markdown-viewer
