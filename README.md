@@ -1,4 +1,4 @@
-# Markdown Studio 📝
+# Simple Markdown Viewer -- By Sudhir Jangra📝
 A fast, standalone Markdown reader with live GitHub-style rendering, built with Python and PyQt6.
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)

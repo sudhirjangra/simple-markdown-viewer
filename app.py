@@ -40,7 +40,7 @@ class MarkdownViewer(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.setWindowTitle("Markdown Reader")
+        self.setWindowTitle("Markdown Reader - Sudhir Jangra")
         self.resize(1300, 800)
 
         main_splitter = QSplitter(Qt.Orientation.Horizontal)
